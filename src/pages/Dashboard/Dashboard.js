@@ -1,4 +1,3 @@
-//Dashboard.js ------> src/pages/Dashboard/Dashboard.js
 import { initControler } from "../../utils";
 import "./Dashboard.css";
 
@@ -15,12 +14,12 @@ const template = () => `
         </figure>
       </li>
       <li>
-        <figure>
+        <figure id="navigateHanged">
           <img
             src="https://res.cloudinary.com/dq186ej4c/image/upload/v1689761641/pngwing.com_1_iq8zfk.png"
-            alt=" go to wacka topo game"
+            alt=" go to page hanged"
           />
-          <h2>WACKA TOPO</h2>
+          <h2>HANGED GAME</h2>
         </figure>
       </li>
       <li>
@@ -44,9 +43,14 @@ const addEventListeners = () => {
   navigatePokemon.addEventListener("click", () => {
     initControler("Pokemon");
   });
+
+  const navigateHanged = document.getElementById("navigateHanged");
+  navigateHanged.addEventListener("click", () => {
+    initControler("Hanged");
+  });
 };
 
-export const printTemplateDashboard = () => {
+export const PrintDashboard = () => {
   /** Como siempre las paginas se renderizan en el main por lo cual inyectamos el template en el contenedor del main */
   document.querySelector("main").innerHTML = template();
 

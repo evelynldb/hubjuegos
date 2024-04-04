@@ -1,5 +1,3 @@
-//Login.js ----> src/pages/Login/Login.js
-
 import { setUser, setUserData } from "../../global/state/globalState";
 import { initControler } from "../../utils/route";
 import "./Login.css";
