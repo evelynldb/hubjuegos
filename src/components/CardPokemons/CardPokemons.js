@@ -1,4 +1,3 @@
-//CardPokemons.js ------> src/components/CardPokemons/CardPokemons.js
 import { getUserData, setUserData } from "../../global/state/globalState";
 import "./CardPokemons.css";
 

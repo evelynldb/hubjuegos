@@ -1,3 +1,36 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: "Roboto", sans-serif;
+
+  & main {
+    padding-top: 20vh;
+    min-height: 90vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  & #app {
+    min-height: 100vh;
+  }
+  & body {
+    transition: ease-in-out 0.2s;
+  }
+
+  & header {
+    height: 20vh;
+    width: 100vw;
+    position: fixed;
+  }
+
+  & footer {
+    height: 10vh;
+    background-color: black;
+  }
+}
+
 :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
@@ -21,20 +54,20 @@ a {
 a:hover {
   color: #535bf2;
 }
-
-body {
+/**
+body { 
   margin: 0;
   display: flex;
   place-items: center;
   min-width: 320px;
   min-height: 100vh;
 }
-
+*/
 h1 {
   font-size: 3.2em;
   line-height: 1.1;
 }
-
+/*
 #app {
   max-width: 1280px;
   margin: 0 auto;
@@ -55,7 +88,7 @@ h1 {
 .logo.vanilla:hover {
   filter: drop-shadow(0 0 2em #f7df1eaa);
 }
-
+*/
 .card {
   padding: 2em;
 }
@@ -71,7 +104,7 @@ button {
   font-size: 1em;
   font-weight: 500;
   font-family: inherit;
-  background-color: #1a1a1a;
+  background-color: #ffce1a;
   cursor: pointer;
   transition: border-color 0.25s;
 }
@@ -92,11 +125,13 @@ button:focus-visible {
     color: #747bff;
   }
   button {
-    background-color: #f9f9f9;
+    background-color: #ffce1a;
   }
 }
 
+/*
 nav img {
   width: 30px;
   height: 30px;
 }
+*/

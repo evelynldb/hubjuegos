@@ -1,0 +1,15 @@
+.letter-container {
+  border-bottom: 5px solid black;
+  padding: 0px;
+  margin: 8px;
+  height: 40px;
+  width: 40px;
+}
+
+.letter {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  height: 100%;
+  font-size: xx-large;
+}

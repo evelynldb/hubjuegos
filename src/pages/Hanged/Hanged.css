@@ -1,0 +1,89 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+#ahorcadoImg {
+  height: 200px;
+  align-self: flex-end;
+}
+
+#hanged {
+  width: 100%; /* Ajusta el ancho del contenedor según tus necesidades */
+  max-width: 800px; /* Establece un ancho máximo para evitar que se extienda demasiado en pantallas grandes */
+  margin: auto; /* Centra el contenedor horizontalmente en la página */
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start; /* Centra verticalmente los elementos */
+  border: 1px solid black;
+}
+
+.hangedMitad {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.hangedContainer {
+  display: flex;
+  width: 100%;
+}
+
+.direction-row {
+  flex-direction: row;
+  justify-content: center;
+}
+
+#hanged > div {
+  margin-bottom: 10px;
+}
+
+#ahorcadoImg {
+  width: 400px; /* Ajusta el ancho de la imagen según tus necesidades */
+  height: auto; /* Para mantener la proporción de la imagen */
+}
+
+#wordContainer {
+  width: 100%; /* Asegura que este contenedor ocupe todo el ancho disponible */
+  display: flex;
+  justify-content: center; /* Centra los elementos hijos horizontalmente */
+  align-items: center; /* Centra verticalmente los elementos hijos */
+  margin-bottom: 30px;
+}
+
+#inputCharContainer {
+  display: flex;
+  justify-content: flex-start; /* Centra los elementos hijos horizontalmente */
+  align-items: center; /* Añade espacio encima del contenedor */
+}
+
+#inputChar {
+  margin-right: 10px; /* Ajusta el margen entre el input y el botón según tus necesidades */
+  padding: 10px;
+  align-content: center;
+  text-align: center;
+  width: 50%;
+  height: 100%;
+  text-transform: uppercase;
+}
+
+.countDown {
+  font-size: 24px; /* Ajusta el tamaño de fuente del contador según tus necesidades */
+  border: 2px solid black; /* Añade un borde al contador */
+  padding: 10px; /* Añade espacio alrededor del contador */
+  margin-top: 20px; /* Ajusta el margen superior según tus necesidades */
+  text-align: center; /* Centra el texto dentro del contador */
+  align-self: flex-start;
+}
+
+#wrongChar {
+  border-bottom: 1px solid black;
+  height: 50px;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  width: 50%;
+  margin: 0 20px;
+}

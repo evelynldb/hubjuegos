@@ -1,0 +1,10 @@
+#gameBoard {
+  margin: 0;
+  width: 600px;
+  max-width: 100%;
+  border: 1px solid green;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* Por ejemplo, 3 columnas iguales */
+  grid-gap: 0;
+  padding: 0;
+}

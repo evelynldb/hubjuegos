@@ -1,57 +1,166 @@
 import "./Hanged.css";
+import { getStateHanged, setStateHanged } from "../../global/state/hangedState";
+import { PrintLettersHanged } from "../../components";
+import { randomWord } from "../../global/data";
+
+//! ------------------------------------------------------------------------------
+//? ------------------------------TEMPLATE INICIAL--------------------------------
+//! ----------------------------------------------------------------
 
 const template = () => `
   <div id="hanged">
-    <div><img src="./images/ahorcado_game.png" alt="Imagen juego del ahorcado"></div>
-    <div id="word"></div>
-    <div id="countdown"></div>
-    <div id="inputCharContainer">
-        <input
-            type="text"
-            id="inputChar"
-            placeholder="Escribe tu letra"
-            maxlength="1"
-            minlength="1"
-        />
-        <button id="buttonTry">Try</button>
+    <div class="hangedContainer">
+      <div class="hangedMitad"><img src="./images/hanged_img/6.png" alt="Imagen juego del ahorcado" id="ahorcadoImg" ></div>
+      <div  class="hangedMitad">
+        <div id="wordContainer"></div>
+        <div>
+          <input
+              type="text"
+              id="inputChar"
+              placeholder=""
+              maxlength="1"
+              minlength="1"
+          />
+          <button id="buttonTry">Try</button>
+        </div>
+      </div>
     </div>
-    <div id="wrongChar"></div>
+
+    <div class="hangedContainer">
+      <div class="hangedMitad direction-row countDown" >
+      <span class="" >Tries: </span>
+      <span class="" id="countDown"></span></div>
+      <div class="hangedMitad  direction-row" id="inputCharContainer">
+        
+       <div id="wrongChar"></div>  
+        <button id="buttonRestart">Restart</button>
+        
+      </div>
+    </div>
+    
+    
 
  </div>
 
 `;
 
-const getWord = () => "hola";
-const word = getWord();
-
+//! ------------------------------------------------------------------------------
+//? ---------------------------EVENTOS PARA CONTENEDOR LETRA-----------------------------------
+//! ------------------------------------------------------------------------------
 const addEventListeners = () => {
   const buttonTry = document.getElementById("buttonTry");
+  const buttonRestart = document.getElementById("buttonRestart");
   const inputChar = document.getElementById("inputChar");
+
+  const enterLetter = () => {
+    if (getStateHanged("countDown") === 0) return; // pongo un return vacío porque si ya no hay más oportunidades, no quiero que haga nada. SI no, lo que me estaba haciendo era permitir tries negativos.
+
+    if (!inputChar.value.length > 0) return;
+
+    const letters = getStateHanged("letters");
+    if (!letters.includes(inputChar.value)) {
+      letters.push(inputChar.value);
+      setStateHanged("letters", letters);
+      checkChar(inputChar.value);
+    }
+    inputChar.value = "";
+    inputChar.focus();
+  };
+
   buttonTry.addEventListener("click", (e) => {
-    checkChar(inputChar.value);
+    enterLetter();
+  });
+
+  inputChar.addEventListener("change", (e) => {
+    enterLetter();
+  });
+
+  buttonRestart.addEventListener("click", (e) => {
+    restart();
   });
 };
 
-const checkChar = (char) => {
-  let posiciones = [];
+//! ------------------------------------------------------------------------------
+//? ---------------------------FUNCIÓN BOTÓN RESTART-----------------------------------
+//! ------------------------------------------------------------------------------
+const restart = () => {
+  const word = randomWord();
+  document.getElementById("wordContainer").innerHTML = "";
+
+  setStateHanged("hangedWord", word.toUpperCase());
+  setStateHanged("countDown", 6);
+  setStateHanged("letters", []);
+  setStateHanged("contadorAciertos", 0);
+
   for (let i = 0; i < word.length; i++) {
-    if (word[i] === char) {
-      posiciones.push(
-        i
-      ); /*esto lo pongo así para visualizar las posiciones, con un array, pero luego tengo que cambiarlo
-      para visualizar la letra*/
-    }
+    const info = {
+      id: i,
+      char: word[i].toUpperCase(),
+    };
+    PrintLettersHanged(info);
   }
-  if (posiciones.length > 0) {
-    // Hemos encntrado letra
-    alert("encontrada: " + char);
-  } else {
-    // Letra no encontraa
-    alert("no contrada: " + char);
+
+  document.getElementById("countDown").innerHTML = getStateHanged("countDown");
+  document.getElementById("wrongChar").innerHTML = "";
+  document.getElementById("buttonTry").disabled = false;
+  document.getElementById("inputChar").focus();
+  document.getElementById("ahorcadoImg").src = `./images/hanged_img/6.png`;
+};
+
+//! ------------------------------------------------------------------------------
+//? ---------------------------FUNCIÓN PARA LA LETRA-----------------------------------
+//! ------------------------------------------------------------------------------
+
+const checkChar = (char) => {
+  let encontrado = false;
+  const word = getStateHanged("hangedWord");
+  word.split("").forEach((letter, i) => {
+    if (letter === char.toUpperCase()) {
+      encontrado = true;
+      document.getElementById(i).style.display = "flex";
+      setStateHanged(
+        "contadorAciertos",
+        getStateHanged("contadorAciertos") + 1
+      );
+      if (hasWon()) {
+        document.getElementById("buttonTry").disabled = true;
+        setTimeout(function () {
+          alert("You WIN!! 😘");
+        }, 600);
+      }
+    }
+  });
+
+  if (!encontrado) {
+    document.getElementById("wrongChar").innerHTML += char.toUpperCase() + "  "; //con esto la letra no encontrada la añado en el div wrongChar, lo paso a mayus
+    const tries = getStateHanged("countDown") - 1;
+    setStateHanged("countDown", tries);
+    document.getElementById("countDown").innerHTML = tries;
+    document.getElementById(
+      "ahorcadoImg"
+    ).src = `./images/hanged_img/${tries}.png`;
+
+    if (tries === 0) {
+      document.getElementById("buttonTry").disabled = true;
+    }
   }
 };
 
+//! ------------------------------------------------------------------------------
+//? ------------------------------FUNCION DE HAS GANADO---------------------------
+//! ------------------------------------------------------------------------------
+
+const hasWon = () =>
+  getStateHanged("contadorAciertos") === getStateHanged("hangedWord").length;
+
+//! ------------------------------------------------------------------------------
+//? ---------------------FUNCION QUE SE EXPORTA QUE PINTA LA PAGINA--------------
+//! ------------------------------------------------------------------------------
+
 export const PrintHangedPage = () => {
   document.querySelector("main").innerHTML = template();
+
+  restart();
+
   addEventListeners();
 };

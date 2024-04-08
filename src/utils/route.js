@@ -4,6 +4,8 @@ import {
   PrintPokemonPage,
   PrintDashboard,
   PrintHangedPage,
+  PrintTresEnRaya,
+  PrintMemoryPage,
 } from "../pages";
 /// estas paginas se haran en el punto 6 ------> Login, PrintPokemonPage, printTemplateDashboard
 
@@ -28,8 +30,11 @@ export const initControler = (pagesRender) => {
     case "Login":
       Login();
       break;
+    case "TresEnRaya":
+      PrintTresEnRaya();
+      break;
     case "Memory":
-      "PrintMemoryPage() ------> en caso de que lo haya";
+      PrintMemoryPage();
       break;
   }
 };

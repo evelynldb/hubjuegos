@@ -23,7 +23,16 @@ const template = () => `
         </figure>
       </li>
       <li>
-        <figure>
+        <figure id="navigateTresEnRaya">
+          <img
+            src="https://res.cloudinary.com/dq186ej4c/image/upload/v1689761735/6168776_kfna36.png"
+            alt="go to tres en raya"
+          />
+          <h2>TRES EN RAYA</h2>
+        </figure>
+      </li>
+      <li>
+        <figure id="navigateMemory">
           <img
             src="https://res.cloudinary.com/dq186ej4c/image/upload/v1689761735/6168776_kfna36.png"
             alt="go to memory game"
@@ -47,6 +56,16 @@ const addEventListeners = () => {
   const navigateHanged = document.getElementById("navigateHanged");
   navigateHanged.addEventListener("click", () => {
     initControler("Hanged");
+  });
+
+  const navigateTresEnRaya = document.getElementById("navigateTresEnRaya");
+  navigateTresEnRaya.addEventListener("click", () => {
+    initControler("TresEnRaya");
+  });
+
+  const navigateMemory = document.getElementById("navigateMemory");
+  navigateMemory.addEventListener("click", () => {
+    initControler("Memory");
   });
 };
 

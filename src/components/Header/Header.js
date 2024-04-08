@@ -8,10 +8,11 @@ import "./Header.css";
 //!-------------------------------------------------------------------
 
 const template = () => `
-  <img
-    src="/images/logo_queen_color.jpg"
+ <img
+    src="/images/logo_queen_color.png"
     alt="title hub game website (app)"
     class="logo"
+    id="logo"
   />
   <nav>
     <img
@@ -49,6 +50,13 @@ const addListeners = () => {
   //! ----------------> DASHBOARD ------------- evento click del boton que nos lleva a los juegos
   const buttonDashboard = document.getElementById("buttonDashboard");
   buttonDashboard.addEventListener("click", (e) => {
+    // llamamos al initController con el dashboard para que pinte la pagina del dashboard
+    initControler("Dashboard");
+  });
+
+  //! ----------------> LOGO ------------- evento click de la imagen del logo que nos lleva al dashboard
+  const logo = document.getElementById("logo");
+  logo.addEventListener("click", (e) => {
     // llamamos al initController con el dashboard para que pinte la pagina del dashboard
     initControler("Dashboard");
   });
