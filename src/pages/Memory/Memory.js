@@ -21,9 +21,6 @@ const template = () => `
 
 const starGame = () => {
   const stopButton = document.getElementById("stop");
-  console.log("CACA1");
-
-  console.log("CACA2");
 
   setStateMemory("interval", setInterval(timeGenerator, 1000));
   Swal.fire({
@@ -37,7 +34,7 @@ const starGame = () => {
     timer: 1000,
   });
   setTimeout(() => {
-    console.log("CACA3");
+    //    console.log("setTime");
 
     setStateMemory("movesCount", 0);
     setStateMemory("seconds", 0);
@@ -50,7 +47,7 @@ const starGame = () => {
     moves.innerHTML = `<span>Moves:</span> ${getStateMemory("movesCount")}`;
     init();
   }, 900);
-  console.log("CACA4");
+  console.log("que es");
 
   // --------- BOTON DE RESTART (ANTES STOP)  ---------------
   const handleStop = () => {
@@ -74,7 +71,7 @@ const init = () => {
   result.innerText = "";
   setStateMemory("winCount", 0);
   let cardValues = generateRandom();
-  console.log(cardValues);
+  //console.log(cardValues);
 
   generador(cardValues);
 };
