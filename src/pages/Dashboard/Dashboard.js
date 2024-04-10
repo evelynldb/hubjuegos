@@ -16,7 +16,7 @@ const template = () => `
       <li>
         <figure id="navigateHanged">
           <img
-            src="https://res.cloudinary.com/dq186ej4c/image/upload/v1689761641/pngwing.com_1_iq8zfk.png"
+            src="./images/hanged_img/hangedDashboard.png"
             alt=" go to page hanged"
           />
           <h2>HANGED GAME</h2>
@@ -25,7 +25,7 @@ const template = () => `
       <li>
         <figure id="navigateTresEnRaya">
           <img
-            src="https://res.cloudinary.com/dq186ej4c/image/upload/v1689761735/6168776_kfna36.png"
+            src="./images/tresEnRaya_img/tresEnRayaDashboard.png"
             alt="go to tres en raya"
           />
           <h2>TRES EN RAYA</h2>

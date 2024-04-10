@@ -12,11 +12,20 @@ import { computerMove, getRandomBinary, hasWon } from "../../utils";
 //! ----------------------------------------------------------------
 
 const template = () => `
-<h1>Juega contra mí! 🙋🏻‍♀️</h1>
-<div><span>El turno es para: </span><span id="turno"></span></div>
-<div id="gameBoard""></div>
-<button id="buttonRestart">RESTART</button>
-`;
+    <div class="container">
+      <div class="titleContainer">
+        <h1>Juega contra "Computer"</h1>
+        <div><span> Le toca empezar el juego a: </span><span id="turno"> </span>
+       </div>
+       <br>
+        <button id="buttonRestart">RESTART</button>
+
+      </div>
+      <div class="game">
+        <div id="gameBoard">board</div>
+      </div>
+    </div>
+    `;
 
 //! -------------------------------------------------------------------------------
 //? ------------------------------FUNCIÓN START GAME (& RESTART)--------------------------------
@@ -56,7 +65,7 @@ const startGame = () => {
     console.log(getStateTresEnRaya("boardGame"));
     document.getElementById(
       indexMove
-    ).innerHTML = `<img src="./images/O.png" alt="O">`; // Pinto la O en HTML
+    ).innerHTML = `<img src="./images/O.png" alt="O">`; // Pinto la imagen de la O en HTML
     setStateTresEnRaya(
       "turnoGame",
       getUser().name.substring(0, getUser().name.length - 4)

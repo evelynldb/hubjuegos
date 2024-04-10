@@ -1,3 +1,46 @@
+@media screen and (max-width: 600px) {
+  .container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .titleContainer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    max-width: 30vw;
+    font-size: 10px;
+  }
+
+  h1 {
+    max-width: 30vw;
+  }
+
+  .game {
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+.container {
+  display: flex;
+  width: 100vw;
+  margin: 10px;
+}
+
+.titleContainer {
+  width: 30vw;
+  display: block;
+  align-content: center;
+  text-align: center;
+}
+
+.game {
+  width: 70vw;
+  display: block;
+}
+
 #gameBoard {
   margin: 0;
   width: 600px;
@@ -7,4 +50,17 @@
   grid-template-columns: repeat(3, 1fr); /* Por ejemplo, 3 columnas iguales */
   grid-gap: 0;
   padding: 0;
+}
+
+h1 {
+  font-size: 2em;
+}
+
+span {
+  font-size: 2em;
+  background-color: black;
+  color: #ffcd1c;
+  border: 1px solid black;
+  font-family: var(--font-game);
+  padding: 1px;
 }

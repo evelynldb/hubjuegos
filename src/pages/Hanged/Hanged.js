@@ -8,39 +8,36 @@ import { randomWord } from "../../global/data";
 //! ----------------------------------------------------------------
 
 const template = () => `
-  <div id="hanged">
-    <div class="hangedContainer">
-      <div class="hangedMitad"><img src="./images/hanged_img/6.png" alt="Imagen juego del ahorcado" id="ahorcadoImg" ></div>
-      <div  class="hangedMitad">
-        <div id="wordContainer"></div>
-        <div>
-          <input
-              type="text"
-              id="inputChar"
-              placeholder=""
-              maxlength="1"
-              minlength="1"
-          />
-          <button id="buttonTry">Try</button>
-        </div>
-      </div>
-    </div>
+ <div id="hanged">
+   <div class="hangedContainer">
+     <div class="hangedMitad"><img src="./images/hanged_img/6.png" alt="Imagen juego del ahorcado" id="ahorcadoImg" ></div>
+     <div  class="hangedMitad">
+       <div id="wordContainer"></div>
+       <div>
+         <input
+             type="text"
+             id="inputChar"
+             placeholder=""
+             maxlength="1"
+             minlength="1"
+         />
+         <button id="buttonTry">Try</button>
+       </div>
+     </div>
+   </div>
 
-    <div class="hangedContainer">
-      <div class="hangedMitad direction-row countDown" >
-      <span class="" >Tries: </span>
-      <span class="" id="countDown"></span></div>
-      <div class="hangedMitad  direction-row" id="inputCharContainer">
-        
-       <div id="wrongChar"></div>  
-        <button id="buttonRestart">Restart</button>
-        
-      </div>
-    </div>
-    
-    
 
- </div>
+   <div class="hangedContainer">
+     <div class="hangedMitad direction-row countDown" >
+       <span class="" >Tries: </span>
+       <span class="" id="countDown"></span></div>
+     <div class="hangedMitad  direction-row" id="inputCharContainer">
+       <div id="wrongChar"></div> 
+       <button id="buttonRestart">Restart</button>
+     </div>
+   </div>
+</div>
+
 
 `;
 

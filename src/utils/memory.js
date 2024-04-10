@@ -31,7 +31,8 @@ export const timeGenerator = () => {
       ? `0${getStateMemory("minutes")}`
       : getStateMemory("minutes");
   const timeValue = document.getElementById("time");
-  timeValue.innerHTML = `<span>Time:</span>${minutesValue}:${secondsValue}`;
+  if (timeValue)
+    timeValue.innerHTML = `<span>Time:</span>${minutesValue}:${secondsValue}`;
 };
 
 export const generador = (cardValues, size = 4) => {
