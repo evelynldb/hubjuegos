@@ -21,20 +21,19 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  flew-grow: 1;
+  flex-grow: 1;
 }
 .hangedContainer {
   display: flex;
   width: 100%;
 }
 
-/*.direction-row {
+.direction-row {
   flex-direction: row;
   justify-content: center;
 }
 
-
-#hanged > div {
+/*#hanged > div {
   margin-bottom: 10px;
 }
 */

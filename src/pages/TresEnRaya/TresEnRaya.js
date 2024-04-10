@@ -6,6 +6,7 @@ import {
 } from "../../global/state/tresEnRayaState";
 import { getUser } from "../../global/state/globalState";
 import { computerMove, getRandomBinary, hasWon } from "../../utils";
+import Swal from "sweetalert2";
 
 //! ------------------------------------------------------------------------------
 //? ------------------------------TEMPLATE INICIAL--------------------------------
@@ -115,7 +116,16 @@ const listeners = () => {
         buttonBox.parentElement.innerHTML = `<img src="./images/${playerSymbol}.png" alt="${playerSymbol}">`;
         setTimeout(function () {
           if (hasWon("X", currentBoard)) {
-            alert("has ganado");
+            //alert("has ganado");
+            Swal.fire({
+              position: "center",
+              title: "GOOD JOB!! 🥳",
+              imageUrl: "./images/goob job.gif",
+              imageHeight: 300,
+              imageAlt: "A tall image",
+              showConfirmButton: false,
+              timer: 3000,
+            });
           } else {
             const indexMove = computerMove("O", currentBoard);
             currentBoard[indexMove] = "O";
@@ -125,7 +135,16 @@ const listeners = () => {
               indexMove
             ).innerHTML = `<img src="./images/O.png" alt="O">`;
             if (hasWon("O", currentBoard)) {
-              alert("ha ganado computer");
+              // alert("ha ganado computer");
+              Swal.fire({
+                position: "center",
+                title: "YOU LOSE!!",
+                imageUrl: "./images/youLose.gif",
+                imageHeight: 300,
+                imageAlt: "A tall image",
+                showConfirmButton: false,
+                timer: 3000,
+              });
             }
           }
         }, 600);

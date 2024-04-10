@@ -55,12 +55,12 @@ const addListeners = () => {
   });
 
   //! ----------------> LOGO ------------- evento click de la imagen del logo que nos lleva al dashboard
-  const logo = document.getElementById("logo");
+  /*const logo = document.getElementById("logo");
   logo.addEventListener("click", (e) => {
     // llamamos al initController con el dashboard para que pinte la pagina del dashboard
     initControler("Dashboard");
   });
-
+*/
   //! ----------------> LOGOUT ----------------
   const buttonLogout = document.getElementById("buttonLogout");
   buttonLogout.addEventListener("click", (e) => {

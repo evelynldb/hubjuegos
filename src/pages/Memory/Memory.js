@@ -15,7 +15,6 @@ const template = () => `
       <button id="stop" class="hide">Restart Game</button>
     </div>
     <div class="controls-c">
-      <div class="portada"><img src="./sourceMemory/portada.gif"></div>
       <p id="result"></p>
 </div></div>`;
 

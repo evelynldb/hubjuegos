@@ -9,13 +9,13 @@
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
-    max-width: 30vw;
+    width: 100vw;
     font-size: 10px;
   }
 
-  h1 {
+  /* h1 {
     max-width: 30vw;
-  }
+  }*/
 
   .game {
     display: flex;
@@ -43,8 +43,9 @@
 
 #gameBoard {
   margin: 0;
-  width: 600px;
-  max-width: 100%;
+  /*width: 100%;*/
+  max-width: 600px;
+  max-height: 600px;
   border: 1px solid green;
   display: grid;
   grid-template-columns: repeat(3, 1fr); /* Por ejemplo, 3 columnas iguales */

@@ -2,6 +2,7 @@ import "./Hanged.css";
 import { getStateHanged, setStateHanged } from "../../global/state/hangedState";
 import { PrintLettersHanged } from "../../components";
 import { randomWord } from "../../global/data";
+import Swal from "sweetalert2";
 
 //! ------------------------------------------------------------------------------
 //? ------------------------------TEMPLATE INICIAL--------------------------------
@@ -53,6 +54,12 @@ const addEventListeners = () => {
     if (getStateHanged("countDown") === 0) return; // pongo un return vacío porque si ya no hay más oportunidades, no quiero que haga nada. SI no, lo que me estaba haciendo era permitir tries negativos.
 
     if (!inputChar.value.length > 0) return;
+
+    if (!/^[a-zA-Z]$/.test(inputChar.value)) {
+      inputChar.value = "";
+      inputChar.focus();
+      return;
+    }
 
     const letters = getStateHanged("letters");
     if (!letters.includes(inputChar.value)) {
@@ -122,7 +129,16 @@ const checkChar = (char) => {
       if (hasWon()) {
         document.getElementById("buttonTry").disabled = true;
         setTimeout(function () {
-          alert("You WIN!! 😘");
+          //alert("You WIN!! 😘");
+          Swal.fire({
+            position: "center",
+            title: "GOOD JOB!! 🥳",
+            imageUrl: "./images/goob job.gif",
+            imageHeight: 300,
+            imageAlt: "A tall image",
+            showConfirmButton: false,
+            timer: 3000,
+          });
         }, 600);
       }
     }
