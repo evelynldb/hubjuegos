@@ -25,8 +25,7 @@ const starGame = () => {
   Swal.fire({
     position: "center",
     title: "SUERTEEE 😘",
-    imageUrl:
-      "https://res.cloudinary.com/dq186ej4c/image/upload/v1712312456/WmP_nkjrov.gif",
+    imageUrl: "./sourceMemory/memoryDashboard.png",
     imageHeight: 300,
     imageAlt: "A tall image",
     showConfirmButton: false,
