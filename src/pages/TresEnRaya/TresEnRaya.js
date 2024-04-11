@@ -47,7 +47,7 @@ const startGame = () => {
   ]);
 
   for (let i = 0; i < 9; i++) {
-    // se supone que con el bucle creo 9 veces la movida
+    // se supone que con el bucle creo 9 veces la movida, y a cada box le doy un id, que es su posicion (i) en el tablero
     PrintBoardTresEnRaya(i);
   }
 
@@ -61,9 +61,9 @@ const startGame = () => {
   if (turno === "Computer") {
     const currentBoard = getStateTresEnRaya("boardGame"); // Obtengo el board del estado, aunque sé que es null
     const indexMove = computerMove("O", currentBoard); // Pido el movimiento de computer
-    currentBoard[indexMove] = "O"; // actualizado mi variable local del board
+    currentBoard[indexMove] = "O"; // actualizo mi variable local del board y le asigno la o al computer
     setStateTresEnRaya("boardGame", currentBoard); // guardo el board en el estado
-    console.log(getStateTresEnRaya("boardGame"));
+    //console.log(getStateTresEnRaya("boardGame"));
     document.getElementById(
       indexMove
     ).innerHTML = `<img src="./images/O.png" alt="O">`; // Pinto la imagen de la O en HTML
@@ -76,14 +76,15 @@ const startGame = () => {
 };
 
 const listeners = () => {
+  // con esto creo los listeners para los button del tablero
   const buttonBoxes = document.querySelectorAll(".buttonBox");
 
   buttonBoxes.forEach((buttonBox) => {
-    console.log(buttonBox);
+    //console.log(buttonBox);
     buttonBox.addEventListener("click", () => {
       //importante tener en mente que el CLICK siempre lo va a hacer el USER
-      console.log(buttonBox.parentElement.id); // ESTA PARTE NO LA ENTIENDO
-      const boardPosition = buttonBox.parentElement.id;
+      //console.log(buttonBox.parentElement.id); //
+      const boardPosition = buttonBox.parentElement.id; //tengo que coger el id del padre, que es la posición del board.
 
       // Traer jugador para saber si X o O
 
@@ -91,27 +92,25 @@ const listeners = () => {
       const currentPlayer = getStateTresEnRaya("turnoGame");
 
       // ------------Asignar la ficha correspondiente al jugador actual
-      const playerSymbol =
+      const playerSymbol = //si el jugado actual es user, le doy x, sino, le doy o
         currentPlayer === getUser().name.substring(0, getUser().name.length - 4)
           ? "X"
           : "O";
 
       // Traer (get) boargaGame
-
-      // -------------Obtener el estado actual del tablero
       const currentBoard = getStateTresEnRaya("boardGame");
 
       // -------------Verificar si la celda está vacía antes de asignar la ficha
 
       if (currentBoard[boardPosition] === null) {
-        //si es igual a null la casilla está disponible.
+        //si es igual a null la casilla está disponible y puedo jugar
         //----------- Asignar la ficha del jugador actual a la posición del tablero
 
-        currentBoard[boardPosition] = playerSymbol; // con esto actualizo  el tablero
+        currentBoard[boardPosition] = playerSymbol; // con esto actualizo  el tablero en la variable local current board
 
         // -----------Actualizar el estado del tablero en el estado global
         setStateTresEnRaya("boardGame", currentBoard);
-        console.log(getStateTresEnRaya("boardGame"));
+        //console.log(getStateTresEnRaya("boardGame"));
         // -----------Renderizar la ficha en la celda del tablero
         buttonBox.parentElement.innerHTML = `<img src="./images/${playerSymbol}.png" alt="${playerSymbol}">`;
         setTimeout(function () {
@@ -147,8 +146,7 @@ const listeners = () => {
               });
             }
           }
-        }, 600);
-        // Comprobamos si ha ganado el usuario
+        }, 600); //le meto este tiempo para que se pinte la ultima jugada de computer antes de que salte el swal.
       }
     });
   });

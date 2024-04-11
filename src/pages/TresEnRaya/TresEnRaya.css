@@ -30,14 +30,14 @@
 }
 
 .titleContainer {
-  width: 30vw;
+  width: 50vw;
   display: block;
   align-content: center;
   text-align: center;
 }
 
 .game {
-  width: 70vw;
+  width: 50vw;
   display: block;
 }
 

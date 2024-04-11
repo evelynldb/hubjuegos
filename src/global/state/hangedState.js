@@ -1,11 +1,12 @@
 const dataHanged = {
   hangedWord: null, // variable almacena la palabra del ahorcado.
   countDown: 6,
-  letters: [],
+  letters: [], // esta variable es para meter las letras erróneas
   contadorAciertos: 0,
 };
 
 export const getStateHanged = (typeOfValue) => {
+  //OBTENER
   switch (typeOfValue) {
     case "hangedWord":
       return dataHanged.hangedWord;
@@ -19,6 +20,7 @@ export const getStateHanged = (typeOfValue) => {
 };
 
 export const setStateHanged = (typeOfValue, setValue) => {
+  //ACTUALIZAR VALORES
   switch (typeOfValue) {
     case "hangedWord":
       dataHanged.hangedWord = setValue;

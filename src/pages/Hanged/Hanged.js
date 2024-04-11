@@ -43,7 +43,7 @@ const template = () => `
 `;
 
 //! ------------------------------------------------------------------------------
-//? ---------------------------EVENTOS PARA CONTENEDOR LETRA-----------------------------------
+//? ---------------------------EVENTOS PARA CONTENEDOR LETRA------------------------
 //! ------------------------------------------------------------------------------
 const addEventListeners = () => {
   const buttonTry = document.getElementById("buttonTry");
@@ -51,23 +51,26 @@ const addEventListeners = () => {
   const inputChar = document.getElementById("inputChar");
 
   const enterLetter = () => {
-    if (getStateHanged("countDown") === 0) return; // pongo un return vacío porque si ya no hay más oportunidades, no quiero que haga nada. SI no, lo que me estaba haciendo era permitir tries negativos.
+    //esto es lo que se ejecuta cuando metemos una letra y añado las siguientes validaciones:
+    if (getStateHanged("countDown") === 0) return; // pongo un return vacío porque, si ya no hay más oportunidades, no quiero que haga nada. SI no, lo que me estaba haciendo era permitir tries negativos.
 
-    if (!inputChar.value.length > 0) return;
+    if (!inputChar.value.length > 0) return; // meto esto paara que no dejar que entren valores vacíos
 
     if (!/^[a-zA-Z]$/.test(inputChar.value)) {
-      inputChar.value = "";
-      inputChar.focus();
+      //con esto hago que solo entre letras
+      inputChar.value = ""; //con esto, si metes un 3 vacía el input
+      inputChar.focus(); // y con esto mantengo focus en input para seguir escribiendo
       return;
     }
 
-    const letters = getStateHanged("letters");
+    const letters = getStateHanged("letters"); //me traigo las letras que tenga en el array de erróneas
     if (!letters.includes(inputChar.value)) {
+      //si la letra no está, la meto en el array, y llamo a la funsión de check
       letters.push(inputChar.value);
       setStateHanged("letters", letters);
-      checkChar(inputChar.value);
+      checkChar(inputChar.value); //compruebo si la letra está en la palabra
     }
-    inputChar.value = "";
+    inputChar.value = ""; //vaciamos y ponemos foco para el siguiente try.
     inputChar.focus();
   };
 
@@ -112,16 +115,17 @@ const restart = () => {
 };
 
 //! ------------------------------------------------------------------------------
-//? ---------------------------FUNCIÓN PARA LA LETRA-----------------------------------
+//? ---------------------------FUNCIÓN PARA LA LETRA------------------------------
 //! ------------------------------------------------------------------------------
 
 const checkChar = (char) => {
   let encontrado = false;
   const word = getStateHanged("hangedWord");
   word.split("").forEach((letter, i) => {
+    // con esto recorremos la palabra como si fuese un array. con el split transformo el string en un array para recorrerlo
     if (letter === char.toUpperCase()) {
       encontrado = true;
-      document.getElementById(i).style.display = "flex";
+      document.getElementById(i).style.display = "flex"; // con esto hago visible la letra acertada
       setStateHanged(
         "contadorAciertos",
         getStateHanged("contadorAciertos") + 1
@@ -139,7 +143,7 @@ const checkChar = (char) => {
             showConfirmButton: false,
             timer: 3000,
           });
-        }, 600);
+        }, 600); // le meto este tiempo de retraso para el alert, para que se vea la palabra
       }
     }
   });
@@ -164,7 +168,7 @@ const checkChar = (char) => {
 //! ------------------------------------------------------------------------------
 
 const hasWon = () =>
-  getStateHanged("contadorAciertos") === getStateHanged("hangedWord").length;
+  getStateHanged("contadorAciertos") === getStateHanged("hangedWord").length; //si el numero de aciertos es el igual a la cantidad de letras la palabra, win!
 
 //! ------------------------------------------------------------------------------
 //? ---------------------FUNCION QUE SE EXPORTA QUE PINTA LA PAGINA--------------

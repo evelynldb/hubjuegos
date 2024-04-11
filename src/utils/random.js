@@ -1,4 +1,5 @@
 export const getRandomBinary = () => {
+  //creo este util para hacer turno aleatorio en 3 en raya
   // Genera un número aleatorio entre 0 y 1
   const randomNum = Math.random();
 
