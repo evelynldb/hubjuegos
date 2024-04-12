@@ -9,3 +9,4 @@ export * from "./random";
 export * from "./tresEnRaya";
 export * from "./memory";
 export * from "./confetti";
+export * from "./topoGame";

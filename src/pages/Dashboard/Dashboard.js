@@ -40,6 +40,15 @@ const template = () => `
           <h2>MEMORY GAME</h2>
         </figure>
       </li>
+      <li>
+        <figure id="navigateTopoGame">
+          <img
+            src="./sourceMemory/memoryDashboard.png"
+            alt="go to topo game"
+          />
+          <h2>TOPO GAME</h2>
+        </figure>
+      </li>
     </ul>
   </div>
 `;
@@ -66,6 +75,11 @@ const addEventListeners = () => {
   const navigateMemory = document.getElementById("navigateMemory");
   navigateMemory.addEventListener("click", () => {
     initControler("Memory");
+  });
+
+  const navigateTopoGame = document.getElementById("navigateTopoGame");
+  navigateTopoGame.addEventListener("click", () => {
+    initControler("TopoGame");
   });
 };
 

@@ -1,0 +1,47 @@
+.containerTopo {
+  display: flex;
+  flex-direction: column;
+  width: 100vw;
+  height: 80vh;
+  margin: 10px;
+  border: 1px solid green;
+  justify-content: center;
+  align-items: center;
+}
+
+.boardGameTopo {
+  width: 90vw;
+  justify-content: center;
+  align-items: center;
+}
+
+.boardContainer {
+  margin: 0;
+  /*width: 100%;*/
+  max-width: 600px;
+  max-height: 600px;
+  border: 1px solid green;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* Por ejemplo, 3 columnas iguales */
+  grid-gap: 0;
+  padding: 0;
+  justify-content: center;
+  align-items: center;
+}
+
+.topoBox {
+  border: 1px solid orange;
+  width: 100%;
+  max-width: 200px;
+  height: 100%;
+  max-height: 200px;
+  margin: 0px;
+  padding: 0px;
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+}
+
+.controls {
+  padding: 10px;
+  border: 1px solid violet;
+}

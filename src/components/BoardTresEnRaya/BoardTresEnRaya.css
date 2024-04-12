@@ -6,13 +6,8 @@
   max-height: 200px;
   margin: 0px;
   padding: 0px;
+  aspect-ratio: 1 / 1;
   overflow: hidden;
-}
-
-.tikBox::after {
-  content: "";
-  display: block;
-  padding-bottom: 100%;
 }
 
 .buttonBox {

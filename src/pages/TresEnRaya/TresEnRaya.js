@@ -19,7 +19,7 @@ const template = () => `
         <div><span> Le toca empezar el juego a: </span><span id="turno"> </span>
        </div>
        <br>
-        <button id="buttonRestart">RESTART</button>
+        <button id="buttonRestart">Restart</button>
 
       </div>
       <div class="game">
