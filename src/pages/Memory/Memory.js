@@ -49,8 +49,6 @@ const starGame = () => {
 
   // --------- BOTON DE RESTART (ANTES STOP)  ---------------
   const handleStop = () => {
-    console.log("CACA5STOP");
-
     const time = document.getElementById("time");
     time.innerHTML = "";
     clearInterval(getStateMemory("interval"));

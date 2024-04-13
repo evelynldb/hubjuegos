@@ -6,3 +6,4 @@ export * from "./Spinner/SpinnerButton";
 export * from "./LetterHanged/LetterHanged";
 export * from "./BoardTresEnRaya/BoardTresEnRaya";
 export * from "./CardMemory/CardMemory";
+export * from "./BoxTopoGame/BoxTopoGame";

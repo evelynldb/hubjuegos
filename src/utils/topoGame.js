@@ -1,7 +1,6 @@
 import { getStateTopo, setStateTopo } from "../global/state/topoState";
 
 export const timer = (elementId) => {
-  console.log("A");
   setStateTopo("seconds", getStateTopo("seconds") + 1);
 
   if (getStateTopo("seconds") >= 60) {
@@ -19,4 +18,11 @@ export const timer = (elementId) => {
   const timeValue = document.getElementById(elementId);
   if (timeValue)
     timeValue.innerHTML = `<span>Time:</span>${minutesValue}:${secondsValue}`;
+};
+
+export const generarBooleanoAleatorio = (probabilidad) => {
+  if (probabilidad < 0 || probabilidad > 1) {
+    return "La probabilidad debe estar entre 0 y 1";
+  }
+  return Math.random() < probabilidad;
 };

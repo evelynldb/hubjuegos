@@ -1,0 +1,17 @@
+.topoBox {
+  border: 1px solid orange;
+  width: 100%;
+  max-width: 200px;
+  height: 100%;
+  max-height: 200px;
+  margin: 0px;
+  padding: 0px;
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+}
+
+.topoBox img {
+  width: 100%; /* Ajustar el ancho de la imagen al 100% del botón */
+  height: 100%; /* Ajustar el alto de la imagen al 100% del botón */
+  object-fit: contain; /* Ajustar la imagen para cubrir el contenedor */
+}

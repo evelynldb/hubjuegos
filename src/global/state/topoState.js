@@ -2,6 +2,7 @@ const dataState = {
   seconds: 0,
   minutes: 0,
   interval: null,
+  aciertos: 0,
 };
 
 export const getStateTopo = (typeOfValue) => {
@@ -12,6 +13,8 @@ export const getStateTopo = (typeOfValue) => {
       return dataState.minutes;
     case "interval":
       return dataState.interval;
+    case "aciertos":
+      return dataState.aciertos;
   }
 };
 
@@ -25,6 +28,9 @@ export const setStateTopo = (typeOfValue, setValue) => {
       break;
     case "interval":
       dataState.interval = setValue;
+      break;
+    case "aciertos":
+      dataState.aciertos = setValue;
       break;
   }
 };

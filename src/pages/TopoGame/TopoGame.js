@@ -1,6 +1,7 @@
 import "./TopoGame.css";
-import { timer } from "../../utils";
+import { generarBooleanoAleatorio, timer } from "../../utils";
 import { setStateTopo } from "../../global/state/topoState";
+import { PrintBoxTopoGame } from "../../components/BoxTopoGame/BoxTopoGame";
 //! ------------------------------------------------------------------------------
 //? ------------------------------TEMPLATE INICIAL--------------------------------
 //! ----------------------------------------------------------------
@@ -10,20 +11,6 @@ const template = () => `
       <div id="time"></div>
       <div class="boardGameTopo">
         <div class="boardContainer">
-          <div class="topoBox"></div>
-                  <div class="topoBox"></div>
-                <div class="topoBox"></div>
-                  <div class="topoBox"></div>
-          <div class="topoBox"></div>
-                  <div class="topoBox"></div>
-            <div class="topoBox"></div>
-                  <div class="topoBox"></div>
-            <div class="topoBox"></div>
-                  <div class="topoBox"></div>
-          <div class="topoBox"></div>
-                  <div class="topoBox"></div>
-
-
         </div>
       </div>
       <div class="controls">
@@ -38,7 +25,53 @@ const template = () => `
 //! ------------------------------------------------------------------------------
 
 const startGame = () => {
-  setStateTopo("interval", setInterval(timer("time"), 1000));
+  document.querySelector(".boardContainer").innerHTML = "";
+  for (let i = 0; i < 12; i++) {
+    PrintBoxTopoGame(i);
+  }
+
+  const buttonBoxes = document.querySelectorAll(".topoBox");
+  const getRandomNumber = (min, max) => {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+  };
+  buttonBoxes.forEach((buttonBox, i) => {
+    setInterval(() => {
+      //debugger;
+      if (generarBooleanoAleatorio(0.2)) {
+        //aqui meto la funcion de util para generar probabilidad de true o falsa, es decir, de que salga o no el topo
+        buttonBox.innerHTML = `<img id='img_${i}' src='../../public/images/topo_img/topoImg.png'/>`;
+
+        setTimeout(() => {
+          buttonBox.innerHTML = "";
+        }, getRandomNumber(500, 1500));
+      }
+    }, getRandomNumber(800, 2000)); // TODO------este tiene que ser random
+  });
+
+  setStateTopo("aciertos", 0);
+  setStateTopo("interval", 0);
+
+  setStateTopo(
+    "interval",
+    setInterval(() => {
+      timer("time");
+    }, 1000)
+  );
+};
+
+//! ------------------------------------------------------------------------------
+//? ---------------------------FUNCIÓN----------------------------
+//! ------------------------------------------------------------------------------
+
+//! ------------------------------------------------------------------------------
+//? ---------------------------EVENTOS PARA EL JUEGO----------------------------
+//! ------------------------------------------------------------------------------
+
+const addEventListeners = () => {
+  const buttonRestart = document.getElementById("restarBtn");
+  buttonRestart.addEventListener("click", () => {
+    startGame();
+  });
 };
 
 //! ------------------------------------------------------------------------------
@@ -49,4 +82,6 @@ export const PrintTopoGame = () => {
   document.querySelector("main").innerHTML = template();
 
   startGame();
+
+  addEventListeners();
 };
