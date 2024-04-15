@@ -20,9 +20,18 @@ export const timer = (elementId) => {
     timeValue.innerHTML = `<span>Time:</span>${minutesValue}:${secondsValue}`;
 };
 
+//!--------------FUNCIÓN PARA LA SALIDA DEL TOPO--------------
+//-------------Lo uso para se muestre el topo con una probabilidad determinada------------
+
 export const generarBooleanoAleatorio = (probabilidad) => {
   if (probabilidad < 0 || probabilidad > 1) {
     return "La probabilidad debe estar entre 0 y 1";
   }
   return Math.random() < probabilidad;
+};
+
+//!--------------FUNCIÓN PARA GENERAR NUM ALEATORIO ENTRE DOS NUM--------------
+//-------------Lo uso para marcar la salida aleatoria de los topos-------------
+export const getRandomNumber = (min, max) => {
+  return Math.floor(Math.random() * (max - min + 1)) + min;
 };

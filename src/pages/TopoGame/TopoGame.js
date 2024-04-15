@@ -1,7 +1,9 @@
 import "./TopoGame.css";
-import { generarBooleanoAleatorio, timer } from "../../utils";
-import { setStateTopo } from "../../global/state/topoState";
+import { generarBooleanoAleatorio, getRandomNumber, timer } from "../../utils";
+import { getStateTopo, setStateTopo } from "../../global/state/topoState";
 import { PrintBoxTopoGame } from "../../components/BoxTopoGame/BoxTopoGame";
+import { getStateMemory } from "../../global/state/memoryState";
+
 //! ------------------------------------------------------------------------------
 //? ------------------------------TEMPLATE INICIAL--------------------------------
 //! ----------------------------------------------------------------
@@ -14,7 +16,7 @@ const template = () => `
         </div>
       </div>
       <div class="controls">
-        <div id="acierto">Aciertos: <span id="spn_aciertos">2</span></div>
+        <div id="acierto">Aciertos: <span id="spn_aciertos"></span></div>
         <div id="restart"><button id="restarBtn">Restart</button></div>
       </div>
     </div>
@@ -30,26 +32,44 @@ const startGame = () => {
     PrintBoxTopoGame(i);
   }
 
-  const buttonBoxes = document.querySelectorAll(".topoBox");
-  const getRandomNumber = (min, max) => {
-    return Math.floor(Math.random() * (max - min + 1)) + min;
-  };
-  buttonBoxes.forEach((buttonBox, i) => {
-    setInterval(() => {
-      //debugger;
-      if (generarBooleanoAleatorio(0.2)) {
-        //aqui meto la funcion de util para generar probabilidad de true o falsa, es decir, de que salga o no el topo
-        buttonBox.innerHTML = `<img id='img_${i}' src='../../public/images/topo_img/topoImg.png'/>`;
+  const topoBoxes = document.querySelectorAll(".topoBox");
 
+  topoBoxes.forEach((topoBox, i) => {
+    setInterval(() => {
+      //funcion propia de js, ejecuta lo de dentro cada x milisegundos.
+      if (generarBooleanoAleatorio(0.2)) {
+        //le digo que salga con un 20% de probabilidad
+        topoBox.innerHTML = `<img id='img_${i}' src='../../public/images/topo_img/topoImg.png'/>`;
+        /** añadir evento click a la imagen con get elementbyid. y en el listener coger el contardor de aciertos, incrementarlo en 1 y
+         *  guardarlo con set en el estado
+         * y luego actualizar con un inner el span en html*/
+        /** cambiar la imagen dentro del listener por la del topo llorando*/
+        const topoImg = document.getElementById(`img_${i}`);
+
+        topoImg.addEventListener("click", () => {
+          topoBox.innerHTML = `<img id='img_${i}' src='../../public/images/topo_img/topoImgSad.png'/>`;
+          setTimeout(() => {
+            topoBox.innerHTML = "";
+          }, 500);
+
+          const aciertos = getStateTopo("aciertos") + 1;
+          setStateTopo("aciertos", aciertos);
+          document.getElementById("spn_aciertos").innerHTML = aciertos;
+        });
         setTimeout(() => {
-          buttonBox.innerHTML = "";
-        }, getRandomNumber(500, 1500));
+          topoBox.innerHTML = "";
+        }, getRandomNumber(500, 1500)); //este es el tiempo para que desaparezca el topo, es decir, se muestra durante ese tiempo.
       }
-    }, getRandomNumber(800, 2000)); // TODO------este tiene que ser random
+    }, getRandomNumber(800, 2000)); //entre 800 y 2000mls se ejecuta lo de dentro.
   });
 
   setStateTopo("aciertos", 0);
+  document.getElementById("spn_aciertos").innerHTML = "";
+
   setStateTopo("interval", 0);
+
+  setStateTopo("minutes", 0);
+  setStateTopo("seconds", 0);
 
   setStateTopo(
     "interval",

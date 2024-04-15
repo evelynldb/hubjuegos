@@ -43,7 +43,7 @@ const template = () => `
       <li>
         <figure id="navigateTopoGame">
           <img
-            src="./sourceMemory/memoryDashboard.png"
+            src="./images/topo_img/topoDashboard.png"
             alt="go to topo game"
           />
           <h2>TOPO GAME</h2>
